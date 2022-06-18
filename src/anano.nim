@@ -36,14 +36,30 @@ const
   step = int(ceil(1.6 * mask * nanoIDSize / nanoAlphabet.len))
 
 type
-  NanoID* = array[nanoIDSize, byte]
+  # Basically a fixed sized string
+  NanoID* = array[nanoIDSize, char]
 
 func `$`*(id: NanoID): string =
   ## Converts ID into a string
   result = newString(nanoIDSize)
   for i in 0..<nanoIDSize:
-    result[i] = char(id[i])
+    result[i] = id[i]
     
+proc parseNanoID*(id: openArray[char]): NanoID =
+  ## Parses a nanoID from a string like parameter
+  runnableExamples:
+    let id = genNanoID()
+    # ID has been sent to client, then client is sending it
+    # back but in string form
+    let strID = $id
+    assert parseNanoID(strID) == id
+    
+  runnableExamples "-d:nanoIDSize=4":
+    assert parseNanoID(['a', 'b', 'c', 'd']) == parseNanoID("abcd")
+  #==#
+  assert id.len == nanoIDSize, "ID is of invalid size"
+  for i in 0..<nanoIDSize:
+    result[i] = id[i]
 
 proc genNanoID*(): NanoID =
   ## Generates a random ID.
@@ -55,7 +71,7 @@ proc genNanoID*(): NanoID =
       for j in 0 .. step - 1:
         var randByte = randomBytes[j] and mask
         if randByte < nanoAlphabet.len:
-          result[i] = byte(nanoAlphabet[randByte])
+          result[i] = nanoAlphabet[randByte]
           inc i
           if i == nanoIDSize: 
             break topLevel
