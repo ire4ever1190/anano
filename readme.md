@@ -8,7 +8,7 @@ to reduce the number of dependencies needed.
 Works on `c`, `c++` and `js` backends
 
 Main reason I built this was so I could learn how the ID was generated but also make it generate
-a `array[byte]` instead so I code better store it in a database for another project of mine
+an `array[byte]` instead so I could better store it in a database for another project of mine
 
 > **Warning**
 > I am not a security expert and this has not be vetted. Use this at your own risk
@@ -23,7 +23,7 @@ echo id
 ```
 
 #### Benchmarks
-(From `bencmark.nim`, compiled with `-d:release`)
+(From `benchmark.nim`, compiled with `-d:release`)
 
 ```
 name ............................... min time      avg time    std dv   runs
