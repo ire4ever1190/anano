@@ -1,0 +1,27 @@
+name: Tests
+
+on: [push, pull_request]
+  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        nim: [1.6.0, stable, 'devel' ]
+      fail-fast: false
+      max-parallel: 3
+
+    name: Nim ${{ matrix.nim }}
+    steps:
+    - name: Setup Nim Enviroment
+      uses: actions/checkout@master
+    - uses: jiro4989/setup-nim-action@v1
+      with:
+          nim-version: ${{ matrix.nim }}
+
+    - name: Run tests
+      run: nimble test
+
+    - name: Test doc examples
+      run: nimble doc src/anano.nim
