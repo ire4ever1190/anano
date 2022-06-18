@@ -7,6 +7,7 @@ const n = 10_000
 timeIt "anano":
   for i in 0 ..< n:
     # Convert to string to be more fair
+    echo $genNanoID()
     keep $genNanoID()
 
 timeIt "nim-neoid":
