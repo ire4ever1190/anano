@@ -10,3 +10,7 @@ test "No collision for 1M entries":
   for i in 0..<n:
     generated.incl genNanoID()
   check generated.len == n
+
+test "To/from string":
+  var id = genNanoID()
+  check parseNanoID($id) == id
