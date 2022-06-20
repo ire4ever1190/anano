@@ -24,11 +24,13 @@ echo id
 ```
 
 #### Benchmarks
-(From `benchmark.nim`, compiled with `-d:release`)
+
+Time for generating $10000$ elements
 
 ```
 name ............................... min time      avg time    std dv   runs
 anano ............................. 13.078 ms     13.182 ms    ±0.205   x376
 nim-neoid ........................ 174.737 ms    181.768 ms    ±7.628    x28
 ```
+(From `benchmark.nim`, compiled with `-d:release`)
 
