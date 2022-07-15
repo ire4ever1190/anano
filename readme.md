@@ -1,9 +1,9 @@
 ### Anano
 Another nanoID implementation for Nim.
 
-This implementation is based off of [nim-neoid](https://github.com/theAkito/nim-neoid) but uses 
-more compile time computations to give massive speedups. Anano also only uses the standard library
-to reduce the number of dependencies needed.
+This implementation is based off of [nim-neoid](https://github.com/theAkito/nim-neoid) but 
+- uses more compile time code to give massive speedups (This comes with the tradeoff though that you can't define options at runtime).
+- Only uses the nim standard library
 
 Works on `c`, `c++` and `js` backends
 
