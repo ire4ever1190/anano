@@ -24,14 +24,7 @@ const
     ## The size to use for nano IDs
 
   # Precompute some values
-  mask = block:
-    var maskVal: byte
-    for i in [15.byte, 31, 63, 127, 255]:
-      if i >= nanoAlphabet.len:
-        maskVal = i
-        break
-    doAssert maskVal != 0
-    maskVal
+  mask = byte(nextPowerOfTwo(nanoAlphabet.len)) - 1
     
   step = int(ceil(1.6 * mask * nanoIDSize / nanoAlphabet.len))
 
