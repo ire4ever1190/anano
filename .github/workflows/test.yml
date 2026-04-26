@@ -41,7 +41,7 @@ jobs:
 
       - uses: iffy/install-nim@v5
         with:
-          version: ${{ matrix.nimversion }}
+          version: stable
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
