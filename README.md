@@ -14,7 +14,7 @@ an `array[byte]` instead so I could better store it in a database for another pr
 > I am not a security expert and this has not be vetted. Use this at your own risk
 
 #### Usage
-[docs](https://ire4ever1190.github.io/anano/anano.html)
+[docs](https://ire4ever1190.github.io/anano/stable/anano.html)
 
 ```nim
 import anano

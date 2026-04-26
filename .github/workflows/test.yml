@@ -16,10 +16,13 @@ jobs:
     steps:
     - name: Setup Nim Enviroment
       uses: actions/checkout@master
-    - uses: jiro4989/setup-nim-action@v1
-      with:
-          nim-version: ${{ matrix.nim }}
 
+    - uses: iffy/install-nim@v5
+      with:
+        version: ${{ matrix.nim }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: Run tests
       run: nimble test
 
@@ -36,11 +39,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Setup nim"
-        uses: jiro4989/setup-nim-action@v1
+      - uses: iffy/install-nim@v5
+        with:
+          version: ${{ matrix.nimversion }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Build documentation"
-        uses: ire4ever1190/nim-docs-action@v1
+        uses: ire4ever1190/nim-docs-action@v2
         with:
           main-file: "src/anano.nim"
           deploy: "pages"
